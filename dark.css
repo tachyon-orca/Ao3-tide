@@ -44,7 +44,7 @@ span.symbol, .splash .news .meta, select {
   Please also remember to provide fallback fonts 
   (something like 'serif' or 'sans-serif', separated by a comma)
   */
-  font-family: Verdana, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
+  font-family: "Helvetica Neue", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
 }
 
 .qtip-content, p.note, blockquote, body,
@@ -61,7 +61,7 @@ button, #main, select {
   as a measurement changes A LOT between numbers, so you might want to try
   decimals like 1.1em, 1.2em, 1.15em before going a number up (or down)
   */
-  font-size: 1em;
+  font-size: 1.25em;
 }
 
 .home .header h2,
