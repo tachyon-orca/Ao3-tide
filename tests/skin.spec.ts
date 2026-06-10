@@ -3,7 +3,7 @@
  *
  * For each page type × skin (dark/light) × viewport (desktop/tablet/mobile):
  *   1. Navigate to a real otwarchive page
- *   2. Inject the combined skin CSS
+ *   2. Inject the split skin CSS with AO3 media settings
  *   3. Take a full-page screenshot (saved by Playwright's HTML reporter)
  *
  * Prerequisites:
