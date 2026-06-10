@@ -1738,3 +1738,27 @@ h2.heading a.tag {
 a.tag {
   transition: color 0.5s ease-out, box-shadow 0.3s;
 }
+
+/* Work navigation dropdown panels (.download secondary, chapter index) */
+.work.navigation .download,
+.javascript .work.navigation .download .secondary {
+  background: #2e2e2e;
+  border-color: #363636;
+  box-shadow: 1px 1px 3px #000;
+}
+/* Dropdown trigger <button>s (.download, .chapter) sit inside ul.actions, so
+   AO3's .actions button { background:#eee; border:1px solid #bbb } (specificity
+   0,1,1) beats bare `button` in the skin (0,0,1). Also covers the chapter-index
+   button which has the same structure and the same white-border hover issue. */
+.work.navigation button {
+  background: #454545;
+  color: #e7e7e7;
+  border: none;
+}
+.work.navigation button:hover,
+.work.navigation button:focus {
+  background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  color: #2e2e2e;
+  box-shadow: 1px 3px 10px -3px black;
+  border: none;
+}
