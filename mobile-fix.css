@@ -14,12 +14,24 @@ h4 {
 }
 
 /*brings back the full width after reducing it on desktop*/
-div#inner, #workskin,
+#workskin,
 .collection blockquote.userstuff,
 .blurb .userstuff,
 .news .userstuff,
 .system .userstuff {
   width: 100% !important;
+}
+
+div#inner {
+  box-sizing: border-box;
+  max-width: 100%;
+  width: auto !important;
+}
+
+#workskin,
+.userstuff {
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 /*footer modules behave*/
