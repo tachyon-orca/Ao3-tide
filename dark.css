@@ -61,6 +61,13 @@ button, #main, select {
   as a measurement changes A LOT between numbers, so you might want to try
   decimals like 1.1em, 1.2em, 1.15em before going a number up (or down)
   */
+  font-size: 1em;
+}
+
+#workskin,
+li.blurb blockquote.userstuff,
+li.blurb .userstuff.summary,
+.splash blockquote.userstuff.summary {
   font-size: 1.25em;
 }
 
@@ -1502,8 +1509,8 @@ tbody tr:hover {
 #workskin,
 .system .userstuff,
 .collection blockquote.userstuff {
-  width: 70%;
-  max-width: 45em;
+  width: 80%;
+  max-width: 55em;
 }
 
 .blurb blockquote {
