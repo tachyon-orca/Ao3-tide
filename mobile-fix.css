@@ -3,9 +3,25 @@
   GENERAL
 ===========
 */
-/*Font size (change the percentage to change the font size of the work)*/
-#workskin, .userstuff {
-  font-size: 110%;
+/* Larger reading text without scaling tags and site UI. */
+#workskin,
+li.blurb blockquote.userstuff,
+li.blurb .userstuff.summary,
+.splash blockquote.userstuff.summary {
+  font-size: 1.25rem;
+}
+
+a.tag,
+.blurb .tags,
+.blurb .tags li,
+.blurb .tags a,
+.blurb h5.fandoms,
+.blurb h5.fandoms a,
+dl.stats,
+dl.stats dt,
+dl.stats dd,
+.datetime {
+  font-size: 1rem;
 }
 
 /*title font*/

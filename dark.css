@@ -68,7 +68,7 @@ button, #main, select {
 li.blurb blockquote.userstuff,
 li.blurb .userstuff.summary,
 .splash blockquote.userstuff.summary {
-  font-size: 1.25em;
+  font-size: 1.25rem;
 }
 
 .home .header h2,
