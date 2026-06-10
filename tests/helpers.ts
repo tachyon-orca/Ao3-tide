@@ -1,17 +1,26 @@
 import { type Page, expect } from "@playwright/test";
-import { mkdirSync } from "fs";
+import { mkdirSync, readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
 /**
- * Inject the pre-built combined skin CSS into the current page.
+ * Inject the split skin CSS into the current page using AO3's media settings.
  * Call this AFTER page.goto() + waitForLoadState().
  */
 export async function injectSkin(page: Page, skin: "dark" | "light") {
-  const cssPath = join(ROOT, `dist/${skin}-combined.css`);
-  await page.addStyleTag({ path: cssPath });
+  const parts = [
+    { file: `${skin}-base.css`, media: "all" },
+    { file: `${skin}-tablet.css`, media: "only screen and (max-width: 62em)" },
+    { file: `${skin}-phone.css`, media: "only screen and (max-width: 42em)" },
+  ];
+
+  for (const part of parts) {
+    const css = readFileSync(join(ROOT, "dist", part.file), "utf8");
+    await page.addStyleTag({ content: css, media: part.media });
+  }
+
   // Give the browser a moment to apply the new styles
   await page.waitForTimeout(300);
 }

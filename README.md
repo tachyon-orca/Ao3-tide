@@ -10,12 +10,16 @@ npm run build
 
 This writes:
 
-- `dist/dark-combined.css`
-- `dist/light-combined.css`
+- `dist/dark-base.css`
+- `dist/dark-tablet.css`
+- `dist/dark-phone.css`
+- `dist/light-base.css`
+- `dist/light-tablet.css`
+- `dist/light-phone.css`
 - `dist/ao3-user-skins.css`
 
-`dist/ao3-user-skins.css` contains two AO3 site skins, `AO3 Tide Dark` and
-`AO3 Tide Light`, separated by AO3 skin import markers.
+`dist/ao3-user-skins.css` contains three AO3 site skins per theme, separated by
+AO3 skin import markers: Base, Tablet, and Phone.
 
 ## Responsive Build
 
@@ -23,14 +27,24 @@ The original Tide instructions at
 <https://archiveofourown.org/works/32660914> create separate AO3 site skins
 for the base theme, the optional iPad/tablet fix, and the phone fix, then link
 them with AO3 parent skins. This fork keeps the source CSS split the same way,
-but the build step combines those pieces into one adaptive skin per theme.
+and writes AO3-safe split outputs.
 
-`scripts/build.js` appends the tablet and phone files after the base CSS:
+To install on AO3, create three site skins for your chosen theme:
 
-- `ipad-fix.css` is wrapped in `@media screen and (max-width: 62em)`.
-- `mobile-fix.css` is wrapped in `@media screen and (max-width: 42em)`.
-- The phone block comes after the tablet block, so phone-specific rules win
-  when both media queries match.
+- Base: paste `dist/light-base.css` or `dist/dark-base.css`; leave Advanced
+  Media at the default.
+- Tablet: paste `dist/light-tablet.css` or `dist/dark-tablet.css`; set Advanced
+  Media to only `only screen and (max-width: 62em)`.
+- Phone: paste `dist/light-phone.css` or `dist/dark-phone.css`; set Advanced
+  Media to only `only screen and (max-width: 42em)`, add Base and Tablet as parent
+  skins, and use the Phone skin.
 
-Use `dist/dark-combined.css`, `dist/light-combined.css`, or the generated
-AO3 import file instead of manually creating parent-child skin relationships.
+This matches AO3's skin model: responsive behavior comes from each skin's Media
+setting, not from `@media` blocks inside one saved skin. Do not combine the
+Base, Tablet, and Phone files into a single AO3 skin; AO3's CSS cleaner flattens
+inline `@media` wrappers, which makes phone rules apply on desktop.
+
+Important: for the Tablet and Phone skins, clear any other Media selections
+such as `all` or `screen`. If Phone is saved with `screen` plus
+`only screen and (max-width: 42em)`, AO3 will load the Phone skin on desktop
+because `screen` matches desktop browsers.
